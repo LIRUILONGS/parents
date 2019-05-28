@@ -16,21 +16,27 @@ public class UserServiceimlp implements UserService {
     @Autowired
     private User user;
 
-
+/*
+注册
+ */
     @Override
     public boolean addUser(User user) throws Exception {
-
+        if(this.logUser(user)==null){
         userMapper.addUser(user);
         if (user.getId() != 0) {
             return true;
         } else {
             return false;
         }
+        }else
+            return false;
     }
 
+    /*
+    登录
+     */
     @Override
     public User logUser(User users) throws Exception {
-
 
         List<User> list = userMapper.logUser(users);
 

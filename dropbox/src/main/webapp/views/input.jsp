@@ -26,13 +26,13 @@
             <label>密码：</label>
             <form:password path="password"/>
         </p>
-        <%--<p>
-            <label>角色</label>
+        <p>
+            <label>角色：</label>
          <form:select path="role">
                 <option />请选择角色
                 <form:options items="${role}" />
          </form:select>
-        </p>--%>
+        </p>
         <p>
             <label>是否同意此协议</label>
             <input type="checkbox" value="y" name="protocol" >

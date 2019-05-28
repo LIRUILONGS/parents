@@ -21,7 +21,7 @@ public class UserServiceimlpTest {
     public void addUserServiceTest() throws Exception {
         user.setUsername("李瑞long");
         user.setPassword("123456");
-        System.out.println("添加成功："+userServiceimlp.addUser(user));
+        System.out.println("添加是否成功："+userServiceimlp.addUser(user));
 
     }
     @Test

@@ -28,27 +28,34 @@ public class UserController {
         return "input";
     }
 
-    //登录后
+    //处理登录功能
     @RequestMapping("opt")
     public String output(@ModelAttribute User user,Model model,HttpSession session) throws Exception {
 
         if (userServiceimlp.logUser(user)!=null){
             model.addAttribute("user",user);
-
+            session.setAttribute("molder",model);
+            session.setAttribute("User",user);
             return "redirect:/user/mai";
         }else {
             session.setAttribute("logUser","用户名不存在或密码错误");
             return "redirect:/user/ipt";
         }
     }
+
+    //退出登录
+    @RequestMapping("lgut")
+    public String logput(HttpSession session){
+        session.invalidate();
+
+        return "logput";
+    }
+
     //主页面初始化
     @RequestMapping("mai")
     public  String mains(@ModelAttribute User user){
         return "main";
     }
-
-
-
 
 
 
@@ -62,7 +69,7 @@ public class UserController {
         return "register";
     }
 
-    //注册后
+    //处理注册页面
     @RequestMapping("add")
     public  String addUser(@ModelAttribute User user, Model model, HttpSession session) throws Exception {
 
@@ -73,7 +80,7 @@ public class UserController {
             return "forward:/user/ipt";
         }else {
             session.setAttribute("message","嗯，注册失败啦");
-            return "redirect:/user/register";
+            return "redirect:/user/reg";
         }
 
 

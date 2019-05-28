@@ -17,6 +17,9 @@
     <fieldset>
         <legend>用户注册</legend>
         <table>
+            <p>
+                <span style=" color: brown ;"> ${sessionScope.message}</span>
+            </p>
 
         <p><tr>
             <label>用户名：</label>
