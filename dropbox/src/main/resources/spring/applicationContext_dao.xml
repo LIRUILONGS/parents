@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--1 关联jdbc.propterties-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--2 配置连接池-->
+    <bean id="dataSource01" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <context:component-scan base-package="com.qst.pojo"></context:component-scan>
+    <!--3 配置sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--3.1 配置连接池-->
+        <property name="dataSource" ref="dataSource01"/>
+        <!--3.2 关联mybatis的核心配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+
+    </bean>
+    <!--4 扫描mapper接口和mapper映射文件,生成mapper接口的实现类-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--4.1 配置扫描mapper接口和mapper映射文件-->
+        <property name="basePackage" value="com.qst.dao"/>
+    </bean>
+
+    <!--1 扫描业务包下的注解-->
+    <context:component-scan base-package="com.qst.service"/>
+    <!--2 开启事务的注解-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource01"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
