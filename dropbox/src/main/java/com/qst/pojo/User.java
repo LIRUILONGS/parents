@@ -10,6 +10,7 @@ public class User {
     private String password;
     private String countSize;
     private String totalSize;
+    private String role;
 
     public int getId() {
         return id;
@@ -54,12 +55,12 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username, String password, String countSize, String totalSize) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.countSize = countSize;
-        this.totalSize = totalSize;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -70,7 +71,16 @@ public class User {
                 ", password='" + password + '\'' +
                 ", countSize='" + countSize + '\'' +
                 ", totalSize='" + totalSize + '\'' +
+                ", role=" + role +
                 '}';
     }
 
+    public User(int id, String username, String password, String countSize, String totalSize, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.countSize = countSize;
+        this.totalSize = totalSize;
+        this.role = role;
+    }
 }

@@ -13,6 +13,8 @@ public class UserServiceimlp implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private User user;
 
 
     @Override
@@ -27,12 +29,18 @@ public class UserServiceimlp implements UserService {
     }
 
     @Override
-    public User logUser(User user) throws Exception {
+    public User logUser(User users) throws Exception {
 
-        List<User> list = userMapper.logUser(user);
-        for (int i =0;i <2;i++)
-            user = list.get(i);
 
+        List<User> list = userMapper.logUser(users);
+        if (list.size() == 0) {
+            for (int i = 0; i < 2; i++) {
+                user = list.get(i);
+                return user;
+            }
+        } else {
+             user = null;
+        }
         return user;
     }
 }

@@ -25,10 +25,10 @@ public class UserServiceimlpTest {
 
     }
     @Test
-    public void logUserTest(){
-        user.setUsername("李瑞long");
-        user.setPassword("123456");
-        System.out.println(user+"登录成功！");
+    public void logUserTest() throws Exception {
+        user.setUsername("李瑞longss");
+        user.setPassword("123456ss");
+        System.out.println(userServiceimlp.logUser(user)+"登录成功！");
     }
 
 }

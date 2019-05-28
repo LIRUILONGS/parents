@@ -15,7 +15,7 @@
 <!--扫描控制器类-->
     <context:component-scan base-package="com.qst.controller"/>
 <!--使用resource过滤掉不需要的资源-->
-    <mvc:resources mapping="/views/**  " location="/views/"/>
+   <!-- <mvc:resources mapping="/views/**  " location="/views/"/>-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>

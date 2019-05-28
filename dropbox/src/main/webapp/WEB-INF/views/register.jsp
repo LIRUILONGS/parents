@@ -13,16 +13,23 @@
     <title>注册页面</title>
 </head>
 <body>
-<form:form action="${pageContext.request.contextPath}/add" modelAttribute="user">
+<form:form action="${pageContext.request.contextPath}/user/add" modelAttribute="user">
     <fieldset>
         <legend>用户注册</legend>
-        <p>
+        <table>
+
+        <p><tr>
             <label>用户名：</label>
             <form:input path="username"/>
+        </tr>
         </p>
         <p>
-            <label>密码：</label>
-            <form:input path="password"/>
+            <label>请输入您的密码：</label>
+            <form:password path="password" id="password"/>
+        </p>
+        <p>
+            <label>请在次输入您的密码：</label>
+            <input type="password" name="passwords">
         </p>
         <p>
             <label>是否同意此协议</label>
@@ -33,6 +40,7 @@
             <input  type="reset" value="重置">
             <input  type="submit" value="添加">
         </p>
+        </table>
     </fieldset>
 </form:form>
 
