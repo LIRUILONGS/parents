@@ -16,6 +16,9 @@
     <fieldset>
         <legend>用户登录</legend>
         <p>
+           <span style=" color: brown ;"> ${sessionScope.logUser}</span>
+        </p>
+        <p>
             <label>用户名：</label>
             <form:input path="username"/>
         </p>
